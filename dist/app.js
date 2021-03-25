@@ -1,0 +1,32 @@
+/*
+ * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./js/main.js":
+/*!********************!*\
+  !*** ./js/main.js ***!
+  \********************/
+/***/ (() => {
+
+eval("// API KEY\nconst apiKey = \"0a36a564fad59ee8bd848de650b3baf9014b47f8\";\n\n// SELECTOR\nlet locationElement = document.querySelector('#location p');\nlet qualityIcon=document.querySelector('#quality #quality-icon');\nlet qualityDescription = document.querySelector('#quality-description p');\nlet indexValue=document.querySelector('#index-value p');\nconst searchInput=document.querySelector(\"#search-input\");\nconst searchButton=document.querySelector(\"#search-button\");\nconst geoButton=document.querySelector(\"#geo-button\");\n\n// MANUAL SEARCH\nsearchButton.addEventListener('click', (e)=> {\n    getQuality(searchInput.value);\n    e.preventDefault();\n});\nsearchButton.addEventListener('keypress', (e)=> {\n    getQuality(searchInput.value);\n    e.preventDefault();\n});\n\nconst getQuality = async (city) => {\n    try{\n        const response = await fetch(`https://api.waqi.info/search/?token=${apiKey}&keyword=${city}`);\n        const qualityData = await response.json();\n\n        locationElement.innerHTML = `${searchInput.value}<br>Stazione di ` + _.get(qualityData, 'data[0].station.name');\n        indexValue.innerHTML = `Indice Qualità dell'Aria = ` + _.get(qualityData, 'data[0].aqi');\n\n        if(`${qualityData.data[0].aqi}` === '-'){\n            qualityDescription.innerHTML = 'Dati non Disponibili';\n            qualityIcon.innerHTML = '❌';\n        }\n        else if(_.get(qualityData, 'data[0].aqi') >= 0 && _.get(qualityData, 'data[0].aqi') <= 50){\n            qualityDescription.innerHTML = 'Ottima';\n            qualityIcon.innerHTML = '🤩';\n        }\n        else  if(_.get(qualityData, 'data[0].aqi') >= 51 && _.get(qualityData, 'data[0].aqi') <= 100){\n            qualityDescription.innerHTML = 'Moderata';\n            qualityIcon.innerHTML = '😕';\n        }\n        else if(_.get(qualityData, 'data[0].aqi') >= 101 && _.get(qualityData, 'data[0].aqi') <= 150){\n            qualityDescription.innerHTML = 'Malsana';\n            qualityIcon.innerHTML = '🥴';\n        }\n        else  if(_.get(qualityData, 'data[0].aqi') >= 151 && _.get(qualityData, 'data[0].aqi') <= 200){\n            qualityDescription.innerHTML = 'Nociva';\n            qualityIcon.innerHTML = '😷';\n        }\n        else  if(_.get(qualityData, 'data[0].aqi') >= 201 && _.get(qualityData, 'data[0].aqi') <= 300){\n            qualityDescription.innerHTML = 'Terribile';\n            qualityIcon.innerHTML = '🤮';\n        }\n        else if(_.get(qualityData, 'data[0].aqi') >= 300){\n            qualityDescription.innerHTML = 'Pericolosa';\n            qualityIcon.innerHTML = '🤯';\n        }\n    }\n    catch(error){\n        locationElement.innerHTML = `${searchInput.value}<br>Stazione Non Trovata`;\n        indexValue.innerHTML = `Indice Qualità dell'Aria = Non Disponibile`;\n        qualityIcon.innerHTML = '❌';\n    }\n};\n\n// GEOLOCATION\ngeoButton.addEventListener(\"click\" ,(e) => {\n    e.preventDefault();\nlet longitude;\nlet latitude;\n\n    if(navigator.geolocation){\n        navigator.geolocation.getCurrentPosition((position)=> {\n        longitude = position.coords.longitude;\n        latitude = position.coords.latitude;\n        const api =`https://api.waqi.info/feed/geo:${latitude};${longitude}/?token=${apiKey}`;\n\n        fetch(api).then((response) => {\n            return response.json();\n        }).then (aqi => {\n                    locationElement.innerHTML = `Stazione di ` + _.get(aqi, 'data.city.name');\n                    indexValue.innerHTML = `Indice Qualità dell'Aria = ` + _.get(aqi, 'data.aqi');\n\n                    if(_.get(aqi, 'data.aqi') === '-'){\n                        qualityDescription.innerHTML = 'Dati non disponibili';\n                        qualityIcon.innerHTML = '❌';\n                    }\n                    else if(_.get(aqi, 'data.aqi') >= 0 && _.get(aqi, 'data.aqi') <= 50){\n                        qualityDescription.innerHTML = 'Ottima';\n                        qualityIcon.innerHTML = '🤩';\n                    }\n                    else  if(_.get(aqi, 'data.aqi') >= 51 && _.get(aqi, 'data.aqi') <= 100){\n                        qualityDescription.innerHTML = 'Moderata';\n                        qualityIcon.innerHTML = '😕';\n                    }\n                    else if(_.get(aqi, 'data.aqi') >= 101 && _.get(aqi, 'data.aqi') <= 150){\n                        qualityDescription.innerHTML = 'Malsana';\n                        qualityIcon.innerHTML = '🥴';\n                    }\n                    else  if(_.get(aqi, 'data.aqi') >= 151 && _.get(aqi, 'data.aqi') <= 200){\n                        qualityDescription.innerHTML = 'Nociva';\n                        qualityIcon.innerHTML = '😷';\n                    }\n                    else  if(_.get(aqi, 'data.aqi') >= 201 && _.get(aqi, 'data.aqi') <= 300){\n                        qualityDescription.innerHTML = 'Terribile';\n                        qualityIcon.innerHTML = '🤮';\n                    }\n                    else if(_.get(aqi, 'data.aqi') >= 300){\n                        qualityDescription.innerHTML = 'Pericolosa';\n                        qualityIcon.innerHTML = '🤯';\n                    }\n            }   )\n        })\n    }  \n});\n\n//# sourceURL=webpack://aqitask/./js/main.js?");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval devtool is used.
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./js/main.js"]();
+/******/ 	
+/******/ })()
+;
