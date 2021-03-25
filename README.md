@@ -35,7 +35,7 @@ Project is created with:
 To run this project:
 * Clone this repository to your desktop.
 * Insert your personal API Key in .env.example
-* Rename in .env
+* Rename .env-example in .env
 * Save
 * Navigate to the top level of the directory.
 * Open index.html in your browser.
