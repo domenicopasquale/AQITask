@@ -1,5 +1,6 @@
-const Dotenv = require('dotenv-webpack');
-const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const Dotenv = require('dotenv-webpack')
+const path = require('path')
 
 module.exports = {
     entry: "./js/main.js",
@@ -18,6 +19,10 @@ module.exports = {
         ]
     },
     plugins: [
+        new HtmlWebpackPlugin({
+          title: "AQITask",
+          template: path.resolve(__dirname, './src/index.html'),
+        }),
         new Dotenv({
             path: "./.env"
         })
