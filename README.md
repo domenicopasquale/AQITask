@@ -12,7 +12,9 @@
 
 ## General Info
 This is AQITask.
-A simple application that shows the Air Quality Index of every city you want.It is created using JavaScript and the API of WAQI.
+A simple application that shows the Air Quality Index of every city you want. It is created using JavaScript and the API of WAQI.
+
+Test this App at https://aqitask.netlify.app/
 
 ## Description
 This is one of my first project as Web Developer,
