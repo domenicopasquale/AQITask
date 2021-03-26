@@ -34,9 +34,13 @@ Project is created with:
 ## Installation
 To run this project:
 * Clone this repository to your desktop.
-* Insert your personal API Key in .env.example
+* Insert your personal API Key in .env-example
 * Rename .env-example in .env
 * Save
+* Open CLI (terminal console)
+* Run command 'npm install'
+* Build this repository with the command 'npm start'
+* Close CLI (terminal console)
 * Navigate to the top level of the directory.
 * Open index.html in your browser.
 
