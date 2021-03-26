@@ -1,4 +1,4 @@
-# AQITask
+# AQITask - https://aqitask.netlify.app/
 
 ## Table of Contents
 1. [General Info](#general-info)
