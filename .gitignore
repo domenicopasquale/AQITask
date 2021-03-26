@@ -12,6 +12,3 @@ package-lock.json
 
 # Netlify
 .netlify/
-
-# Original File JS 
-js/main.js
