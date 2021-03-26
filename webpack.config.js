@@ -21,7 +21,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
           title: "AQITask",
-          template: path.resolve(__dirname, './src/index.html'),
+          template: path.resolve(__dirname, 'dist/index.html'),
         }),
         new Dotenv({
             path: "./.env"
